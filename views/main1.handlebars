@@ -1,0 +1,63 @@
+<center>
+  <h1>Symptoms</h1>
+  <br>
+<form   method="POST" action="/symptoms">
+<div >
+  <input type="text" name="token" value="" id="token" hidden></input>
+  <input name="symptoms" value="cough" type="checkbox"  id="cough">
+  <label >Cough</label>
+  <br>
+  <input name="symptoms" value="skinrash" type="checkbox"  id="skinrash">
+  <label >Skin Rash</label>
+  <br>
+  <input name="symptoms" value="fatigue" type="checkbox"  id="fatigue">
+  <label >Fatigue</label>
+  <br>
+  <input name="symptoms" value="stomachache" type="checkbox"  id="stomachache">
+  <label >Stomach Ache</label>
+  <br>
+  <input name="symptoms" value="headache" type="checkbox"  id="headache">
+  <label >Head Ache</label>
+  <br>
+  <input name="symptoms" value="backpain" type="checkbox"  id="backpain">
+  <label >Back Pain</label>
+  <br>
+  <input type="checkbox"  id="chestpain">
+  <label name="symptoms" value="chestpain">Chest Pain</label>
+  <br>
+  <input name="symptoms" value="fever" type="checkbox"  id="fever">
+  <label >Fever</label>
+  <br>
+  <input name="symptoms" value="breathlessness" type="checkbox"  id="breathlessness">
+  <label >Breathlessness</label>
+  <br>
+  <input name="symptoms" value="sorethroat" type="checkbox"  id="sorethroat">
+  <label >Sore Throat</label>
+  <br>
+  <input name="symptoms" value="diarrhoea" type="checkbox"  id="diarrhoea">
+  <label >Diarrhoea</label>
+  <br>
+  <input name="symptoms" value="vomitting" type="checkbox"  id="vomiting">
+  <label >Vomiting</label>
+  <br>
+  <input name="symptoms" value="sweating" type="checkbox"  id="sweating">
+  <label >Sweating</label>
+  <br>
+  <input name="symptoms" value="runnynose" type="checkbox"  id="runnynose">
+  <label >Runny Nose</label>
+  <br>
+  <button type="submit" value="SelectSymptoms">Select these symptoms</button>
+</div>
+</form>
+</center>
+
+<script>
+
+$( document ).ready(function() {
+    localStorage.setItem('email','{{email}}' );
+    console.log(localStorage.getItem('email'));
+    document.getElementById('token').value = localStorage.getItem('email');
+
+});
+
+</script>
