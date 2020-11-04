@@ -10,27 +10,54 @@
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">ABC</h5>
+      <p class="card-text">I am a specialised in diagnosing general illness</p>
+      <p class="card-text">Experience : 3 years</p>
+      <p class="card-text">Degree : MBBS</p>
+    <form method="POST" action="/sel1">
+      <input type="text" name="token" value="" id="token" hidden></input>
+    <button type="submit">Select ABC</button></form>
     </div>
   </div>
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">DEF</h5>
+      <p class="card-text">I am a specialised dentist</p>
+      <p class="card-text">Experience : 5 years</p>
+      <p class="card-text">Degree : Bachelor of Dental Surgery</p>
+      <form method="POST" action="/sel2">
+      <input type="text" name="token2" value="" id="token2" hidden></input>
+    <button type="submit">Select DEF</button></form>
     </div>
   </div>
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">XYZ</h5>
+      <p class="card-text">I am a specialised physician</p>
+      <p class="card-text">Experience : 8 years</p>
+      <p class="card-text">Degree : MD</p>    
+      <form method="POST" action="/sel3">
+      <input type="text" name="token3" value="" id="token3" hidden></input>
+    <button type="submit">Select XYZ</button></form>
     </div>
   </div>
 </div>
 
+
 </div>
+
+<script>
+
+$( document ).ready(function() {
+    
+    document.getElementById('token').value = localStorage.getItem('email');
+    document.getElementById('token2').value = localStorage.getItem('email');
+
+    document.getElementById('token3').value = localStorage.getItem('email');
+
+
+});
+
+</script>

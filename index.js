@@ -40,8 +40,15 @@ app.get('/register', (req, res) => {
     res.render('register');
     });
 
-app.get('/selectdoc', (req, res) => {
+    app.get('/dlogin', (req, res) => {
+        //Serves the body of the page aka "main1.handlebars" to the container //aka "index.handlebars"
+        res.render('dlogin');
+        });
+
+app.get('/selectdoc', async(req, res) => {
     //Serves the body of the page aka "main1.handlebars" to the container //aka "index.handlebars"
+    // const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/doctorInfo.json');
+    // console.log(req.body)
     res.render('selectdoc');
     });
 
@@ -61,6 +68,30 @@ app.get('/selectdoc', (req, res) => {
         } 
     })
 
+    app.post('/main2',async(req, res)=>{
+        const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/doctorInfo.json');
+        for(var key in response.data)
+        {
+            var user = response.data[key];
+            if(user.emailid === req.body.email && user.pwd === req.body.password)
+            {
+                const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/userInfo.json');
+                for(var key1 in response.data)
+                {
+                    var user1 = response.data[key1];
+                    if(user1.email === user.pat1)
+                    {
+                        return res.render('main2',{email : user1.email, contact: user1.contact , symptoms: user1.symptoms  });
+                    }
+                } 
+                
+                
+            }
+        } 
+    })
+
+
+
     app.post('/symptoms',async(req, res)=>{
         console.log(req.body);
         const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/userInfo.json');
@@ -78,14 +109,111 @@ app.get('/selectdoc', (req, res) => {
                 const response = await axios.patch(`https://virtual-clinic-57b51.firebaseio.com/userInfo/${name1}.json`, obj);
                 
                 console.log("Hi");
-                return res.render('selectdoc');;           
+                return res.redirect('selectdoc');;           
              }
             } 
         
         
     })
 
-    
+
+    app.post('/sel1',async(req, res)=>{
+        console.log(req.body.token)
+
+        const obj = {
+            'pat1': req.body.token,
+        }
+        const response1 = await axios.patch('https://virtual-clinic-57b51.firebaseio.com/doctorInfo/one.json',obj);
+        
+        const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/userInfo.json');
+        name1 = ''
+        for(var key in response.data)
+        {
+
+            var user = response.data[key];
+            if(user.email === req.body.token)
+            {
+                name1=key
+                const obj = {
+                    'doctor': 'one',
+                }
+                const response = await axios.patch(`https://virtual-clinic-57b51.firebaseio.com/userInfo/${name1}.json`, obj);
+                
+                console.log("Hi");
+             }
+            } 
+
+
+        return res.render('thankyou')
+
+
+
+
+        
+        
+    })
+
+    app.post('/sel2',async(req, res)=>{
+        console.log(req.body.token)
+        const obj = {
+            'pat1': req.body.token2,
+        }
+        const response2 = await axios.patch('https://virtual-clinic-57b51.firebaseio.com/doctorInfo/two.json',obj);
+        
+        const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/userInfo.json');
+        name1 = ''
+        for(var key in response.data)
+        {
+
+            var user = response.data[key];
+            if(user.email === req.body.token2)
+            {
+                name1=key
+                const obj = {
+                    'doctor': 'two',
+                }
+                const response = await axios.patch(`https://virtual-clinic-57b51.firebaseio.com/userInfo/${name1}.json`, obj);
+                
+                console.log("Hi");
+             }
+            } 
+        
+        return res.render('thankyou')
+        
+        
+    })
+
+    app.post('/sel3',async(req, res)=>{
+        
+        const obj = {
+            'pat1': req.body.token3,
+        }
+        const response3 = await axios.patch('https://virtual-clinic-57b51.firebaseio.com/doctorInfo/three.json',obj);
+        
+        const response = await axios.get('https://virtual-clinic-57b51.firebaseio.com/userInfo.json');
+        name1 = ''
+        for(var key in response.data)
+        {
+
+            var user = response.data[key];
+            if(user.email === req.body.token3)
+            {
+                name1=key
+                const obj = {
+                    'doctor': 'three',
+                }
+                const response = await axios.patch(`https://virtual-clinic-57b51.firebaseio.com/userInfo/${name1}.json`, obj);
+                
+                console.log("Hi");
+             }
+            } 
+        
+        
+        return res.render('thankyou')
+        
+        
+    })
+
     app.post('/register',async(req, res)=>{
         console.log(req.body);
         if(req.body.email === null || req.body.email.trim().length === 0)
