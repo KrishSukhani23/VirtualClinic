@@ -1,50 +1,68 @@
 <style>
+  body{
+    background-color: rgb(178, 247, 224);
+  }
     .doc{
         margin: 60px 60px;
         justify-content: center;
     }
+    .card-img-top{
+      width: 250px;
+      height: 300px;
+      text-align: center;
+    }
+    .head{
+      font-size: 70px;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .card-text{
+      font-size: 17px;
+    }
 </style>
 
+<h1 class="head">Select Doctor</h1>
+<center>
 <div class="doc">
 <div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card border-info">
+    <center><img class="card-img-top" src="/images/one.png" alt="Card image cap"></center>
     <div class="card-body">
-      <h5 class="card-title">ABC</h5>
+      <h2 class="card-title">ABC</h2>
       <p class="card-text">I am a specialised in diagnosing general illness</p>
-      <p class="card-text">Experience : 3 years</p>
-      <p class="card-text">Degree : MBBS</p>
+      <p class="card-text"><b>Experience</b> : 3 years</p>
+      <p class="card-text"><b>Degree</b> : MBBS</p>
     <form method="POST" action="/sel1">
       <input type="text" name="token" value="" id="token" hidden></input>
-    <button type="submit">Select ABC</button></form>
+    <button class="btn btn-primary" type="submit">Select ABC</button></form>
     </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card border-info">
+    <center><img class="card-img-top" src="/images/two.png" alt="Card image cap"></center>
     <div class="card-body">
-      <h5 class="card-title">DEF</h5>
+      <h2 class="card-title">DEF</h2>
       <p class="card-text">I am a specialised dentist</p>
-      <p class="card-text">Experience : 5 years</p>
-      <p class="card-text">Degree : Bachelor of Dental Surgery</p>
+      <p class="card-text"><b>Experience</b> : 5 years</p>
+      <p class="card-text"><b>Degree</b> : Bachelor of Dental Surgery</p>
       <form method="POST" action="/sel2">
       <input type="text" name="token2" value="" id="token2" hidden></input>
-    <button type="submit">Select DEF</button></form>
+    <button class="btn btn-primary" type="submit">Select DEF</button></form>
     </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card border-info">
+    <center><img class="card-img-top" src="/images/three.png" alt="Card image cap"></center>
     <div class="card-body">
-      <h5 class="card-title">XYZ</h5>
+      <h2 class="card-title">XYZ</h2>
       <p class="card-text">I am a specialised physician</p>
-      <p class="card-text">Experience : 8 years</p>
-      <p class="card-text">Degree : MD</p>    
+      <p class="card-text"><b>Experience</b> : 8 years</p>
+      <p class="card-text"><b>Degree</b> : MD</p>    
       <form method="POST" action="/sel3">
       <input type="text" name="token3" value="" id="token3" hidden></input>
-    <button type="submit">Select XYZ</button></form>
+    <button class="btn btn-primary" type="submit">Select XYZ</button></form>
     </div>
   </div>
 </div>
-
+</center>
 
 </div>
 

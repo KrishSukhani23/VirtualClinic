@@ -1,4 +1,73 @@
-<h1>HI</h1>
-<h1>{{email}}</h1>
-<h1>{{contact}}</h1>
-<h1>{{symptoms}}</h1>
+<style>
+    body{
+        background-image: url(/images/consult.jpg);
+        background-repeat: no-repeat;
+        background-size: 1600px 800px;
+    }
+    .head{
+      font-size: 70px;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .a{
+        font-size: 20px;
+    }
+    .btn{
+        margin-left: 300px;
+    }
+    .card{
+        margin: 50px;
+    }
+</style>
+
+<h1 class="head">Provide Consultation</h1>
+
+<br><br><br><br>
+<div class="card" style="width: 45rem;">
+  <div class="card-body">
+    <h3 class="card-title">Email : {{email}}</h3>
+    <p class="a card-text">Contact : {{contact}}</p>
+    <p class="a card-text">Symptoms : {{symptoms}}</p>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Consult </button>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form method="POST" action="/consult">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prescription</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <input type="text" name="token" value="" id="token" hidden></input>
+
+        <label for="medicines">Medicines:</label>
+
+        <textarea id="medicines" name="medicines"
+                rows="3" cols="50">
+
+        </textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Consult</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+
+
+<script>
+
+$( document ).ready(function() {
+
+    document.getElementById('token').value = localStorage.getItem('email');
+
+});
+
+</script>

@@ -1,8 +1,75 @@
-<center>
-  <h1>Symptoms</h1>
+<style>
+
+body{
+  margin:100px;
+  text-align: left;
+  background-image: url(/images/symptoms.jpg);
+  background-size: 1600px 800px;
+  
+}
+
+  .some-page-wrapper {
+  margin: 15px;
+  
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.double-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+}
+
+.blue-column {
+  height: 270px;
+  margin-left: auto;
+      margin-top: 200px;
+      font-weight: bold;
+
+  font-size: 23px;
+}
+
+.green-column {
+    height: 270px;
+    margin-left: 70px;
+    font-weight: bold;
+    margin-top: 200px;
+  font-size: 23px;
+
+    }
+    .f{
+      float: right;
+      margin-top: -110px;
+    }
+</style>
+
   <br>
 <form   method="POST" action="/symptoms">
 <div >
+
+
+</div>
+
+<h4 class="f">Welcome, {{email}}</h4>
+<div class='some-page-wrapper'>
+  <div class='row'>
+    <div class='column'>
+      <div class='blue-column'>
   <input type="text" name="token" value="" id="token" hidden></input>
   <input name="symptoms" value="cough" type="checkbox"  id="cough">
   <label >Cough</label>
@@ -24,7 +91,10 @@
   <br>
   <input type="checkbox"  id="chestpain">
   <label name="symptoms" value="chestpain">Chest Pain</label>
-  <br>
+  <br>      </div>
+    </div>
+    <div class='column'>
+      <div class='green-column'>
   <input name="symptoms" value="fever" type="checkbox"  id="fever">
   <label >Fever</label>
   <br>
@@ -46,10 +116,19 @@
   <input name="symptoms" value="runnynose" type="checkbox"  id="runnynose">
   <label >Runny Nose</label>
   <br>
-  <button type="submit" value="SelectSymptoms">Select these symptoms</button>
+        </div>
+    </div>
+  </div>
 </div>
+<br>
+<center>  <button type="submit" class="btn btn-primary" value="SelectSymptoms">Select these symptoms</button></center>
+
+
+
 </form>
-</center>
+
+
+
 
 <script>
 

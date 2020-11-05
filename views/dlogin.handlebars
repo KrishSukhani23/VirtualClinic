@@ -23,13 +23,17 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 body {
-  background-image: url(/stock-market/mainpage.jpg);
+  background-image: url(/images/login.jpeg),url(/images/login1.jpeg);
+  background-size: 800px 800px;
+  background-repeat: no-repeat;
   font-family: 'Open Sans', sans-serif;
+  background-position: left, right;
+
 }
 
 .login {
   width: 400px;
-  margin: 16px auto;
+  margin: 80px auto;
   font-size: 16px;
 }
 
@@ -46,11 +50,11 @@ body {
   margin-right: auto;
   margin-left: auto;
   border: 12px solid transparent;
-  border-bottom-color: rgb(228, 47, 47);
+  border-bottom-color: rgb(228, 21, 21);
 }
 
 .login-header {
-  background: rgb(228, 47, 47);
+  background: rgb(230, 28, 28);
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;
@@ -95,21 +99,33 @@ body {
 }
 
 .login input[type="submit"] {
-  background: rgb(228, 47, 47);
+  background: rgb(224, 21, 21);
   border-color: transparent;
   color: #fff;
   cursor: pointer;
 }
 
 .login input[type="submit"]:hover {
-  background: rgb(228, 47, 47);
+  background: rgb(226, 30, 30);
 }
 
 /* Buttons' focus effect */
 .login input[type="submit"]:focus {
   border-color: rgb(228, 47, 47);
 }
+
+.name{
+  text-align: center;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 60px;
+
+}
 </style>
+
+<h1 class="name">Virtual Clinic</h1>
+<center><h4>Login as a Patient? <a href="/login">Click here</a> </h4></center>
+
 
 <div class="login">
   <div class="login-triangle"></div>
