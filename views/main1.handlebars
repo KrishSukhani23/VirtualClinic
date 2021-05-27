@@ -1,142 +1,81 @@
 <style>
+  body {
+    margin: 100px;
+    text-align: left;
+    background-image: url(/images/);
 
-body{
-  margin:100px;
-  text-align: left;
-  background-image: url(/images/symptoms.jpg);
-  background-size: 1600px 800px;
-  
-}
 
-  .some-page-wrapper {
-  margin: 15px;
-  
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
-}
-
-.double-column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 2;
-}
-
-.blue-column {
-  height: 270px;
-  margin-left: auto;
-      margin-top: 200px;
-      font-weight: bold;
-
-  font-size: 23px;
-}
-
-.green-column {
-    height: 270px;
-    margin-left: 70px;
-    font-weight: bold;
-    margin-top: 200px;
-  font-size: 23px;
-
-    }
-    .f{
-      float: right;
-      margin-top: -110px;
-    }
+  }
 </style>
 
-  <br>
-<form   method="POST" action="/symptoms">
-<div >
-
-
-</div>
-
-<h4 class="f">Welcome, {{email}}</h4>
-<div class='some-page-wrapper'>
-  <div class='row'>
-    <div class='column'>
-      <div class='blue-column'>
-  <input type="text" name="token" value="" id="token" hidden></input>
-  <input name="symptoms" value="cough" type="checkbox"  id="cough">
-  <label >Cough</label>
-  <br>
-  <input name="symptoms" value="skinrash" type="checkbox"  id="skinrash">
-  <label >Skin Rash</label>
-  <br>
-  <input name="symptoms" value="fatigue" type="checkbox"  id="fatigue">
-  <label >Fatigue</label>
-  <br>
-  <input name="symptoms" value="stomachache" type="checkbox"  id="stomachache">
-  <label >Stomach Ache</label>
-  <br>
-  <input name="symptoms" value="headache" type="checkbox"  id="headache">
-  <label >Head Ache</label>
-  <br>
-  <input name="symptoms" value="backpain" type="checkbox"  id="backpain">
-  <label >Back Pain</label>
-  <br>
-  <input type="checkbox"  id="chestpain">
-  <label name="symptoms" value="chestpain">Chest Pain</label>
-  <br>      </div>
-    </div>
-    <div class='column'>
-      <div class='green-column'>
-  <input name="symptoms" value="fever" type="checkbox"  id="fever">
-  <label >Fever</label>
-  <br>
-  <input name="symptoms" value="breathlessness" type="checkbox"  id="breathlessness">
-  <label >Breathlessness</label>
-  <br>
-  <input name="symptoms" value="sorethroat" type="checkbox"  id="sorethroat">
-  <label >Sore Throat</label>
-  <br>
-  <input name="symptoms" value="diarrhoea" type="checkbox"  id="diarrhoea">
-  <label >Diarrhoea</label>
-  <br>
-  <input name="symptoms" value="vomitting" type="checkbox"  id="vomiting">
-  <label >Vomiting</label>
-  <br>
-  <input name="symptoms" value="sweating" type="checkbox"  id="sweating">
-  <label >Sweating</label>
-  <br>
-  <input name="symptoms" value="runnynose" type="checkbox"  id="runnynose">
-  <label >Runny Nose</label>
-  <br>
-        </div>
-    </div>
-  </div>
-</div>
 <br>
-<center>  <button type="submit" class="btn btn-primary" value="SelectSymptoms">Select these symptoms</button></center>
+<form method="POST" action="/symptoms">
+  <div>
+
+
+  </div>
+
+  <h4 class="f">Welcome, {{email}}</h4>
+  <h1>Upload image</h1>
+  <input type="text" name="token" value="" id="token" hidden></input>
+  <input class="adjust" type="file" id="photo" /><br>
+    <button class="btn btn-primary" onclick="uploadImage()">Upload Image</button><br><br>
+  <br>
+  {{!-- <center> <button type="submit" class="btn btn-primary" value="SelectSymptoms">Select these symptoms</button></center> --}}
+
+
 
 
 
 </form>
-
+ <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
 
 
 
 <script>
 
-$( document ).ready(function() {
-    localStorage.setItem('email','{{email}}' );
-    console.log(localStorage.getItem('email'));
+  $(document).ready(function () {
+    localStorage.setItem('email', '{{email}}');
+//    console.log(localStorage.getItem('email'));
     document.getElementById('token').value = localStorage.getItem('email');
 
-});
+  });
+
+//  console.log('{{email}}'.replace(/ /g,''))
+  var actualName = '{{email}}'.replace(/ /g,'')
+  console.log(actualName)
+  var firebaseConfig = {
+    apiKey: "AIzaSyAzH6Dct0f6yYU7iMCCC5W7f3j_Pq2KqfE",
+    authDomain: "dsattendance-6f038.firebaseapp.com",
+    databaseURL: "https://dsattendance-6f038-default-rtdb.firebaseio.com",
+    projectId: "dsattendance-6f038",
+    storageBucket: "dsattendance-6f038.appspot.com",
+    messagingSenderId: "493490183686",
+    appId: "1:493490183686:web:2956fd9d3a856fcb2bed87",
+    measurementId: "G-6ZML9ZKL5G"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    console.log(firebase);
+    
+    function uploadImage() {
+      const ref = firebase.storage().ref();
+      const file = document.querySelector("#photo").files[0];
+      const name = +new Date() + "-" + file.name;
+      const metadata = {
+        contentType: file.type
+      };
+      const task = ref.child(actualName+"/"+name).put(file, metadata);
+      task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+          console.log(url);
+          alert("Uploaded");
+          window.location.reload();
+        })
+        .catch(console.error);
+    }
+
 
 </script>
